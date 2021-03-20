@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Loja</h1>
+    <p>
+        <a href="{% url 'category-list' %}">Categorias</a> | <a href="{% url 'product-list' %}">Produtos</a>
+    </p>
     <h2>Categorias</h2>
     <p>
         <a href="{% url 'category-list' %}">Listar Categorias</a> {% if object %}| <a href="{% url 'category-detail' object.id %}">Ver Categoria de forma detalhada</a>{% endif %}
