@@ -1,46 +1,30 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja - Listagem de Categorias</title>
-    <link rel="stylesheet" href="{% static 'core/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" />
-</head>
-<body>
-    <div class="container">
-        <h1 class="text-center">Loja</h1>
-        <div class="nav justify-content-center">
-            <a class="nav-item nav-link" href="{% url 'category-list' %}">Categorias</a>
-            <a class="nav-item nav-link" href="{% url 'product-list' %}">Produtos</a>
-        </div>
-        <h2>Categorias</h2>
-        <div class="nav">
-            <a class="nav-item nav-link" href="{% url 'category-create' %}">Criar Categoria</a>
-        </div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for category in object_list %}
-                        <tr>
-                            <td>{{ category.id }}</td>
-                            <td>{{ category.name }}</td>
-                            <td>
-                                <a href="{% url 'category-detail' category.id %}">Ver mais</a> | <a href="{% url 'category-update' category.id %}">Editar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+{% extends 'core/base.html' %}
+{% block subtitle %}Listagem de Categorias{% endblock %}
+{% block content %}
+    <h2>Categorias</h2>
+    <div class="nav">
+        <a class="nav-item nav-link" href="{% url 'category-create' %}">Criar Categoria</a>
     </div>
-</body>
-</html>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in object_list %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>
+                            <a href="{% url 'category-detail' category.id %}">Ver mais</a> | <a href="{% url 'category-update' category.id %}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

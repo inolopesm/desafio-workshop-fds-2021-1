@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja - {% block subtitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Loja</h1>
+        <div class="nav justify-content-center">
+            <a class="nav-item nav-link" href="{% url 'category-list' %}">Categorias</a>
+            <a class="nav-item nav-link" href="{% url 'product-list' %}">Produtos</a>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
