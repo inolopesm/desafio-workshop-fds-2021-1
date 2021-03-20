@@ -10,12 +10,11 @@
     <h1>Loja</h1>
     <h2>Categorias</h2>
     <p>
-        <a href="{% url 'category-list' %}">Listar Categorias</a> {% if object %}| <a href="{% url 'category-detail' object.id %}">Ver Categoria de forma detalhada</a>{% endif %}
+        <a href="{% url 'category-list' %}">Listar Categorias</a>
     </p>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
+    <h3>{{ object.name }}</h3>
+    <p>
+        <a href="{% url 'category-update' object.id %}">Editar Categoria</a>
+    </p>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from .models import Category
 from .forms import CategoryForm
@@ -14,5 +14,7 @@ class CategoryListView(ListView):
 class CategoryUpdateView(UpdateView):
     model = Category
     form_class = CategoryForm
-    template_name = 'core/category_form.html'
     success_url = reverse_lazy('category-list')
+
+class CategoryDetailView(DetailView):
+    model = Category
