@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja - Listagem de Produtos</title>
+</head>
+<body>
+    <h1>Loja</h1>
+    <p>
+        <a href="{% url 'category-list' %}">Categorias</a> | <a href="{% url 'product-list' %}">Produtos</a>
+    </p>
+    <h2>Produtos</h2>
+    <p>
+        <a href="{% url 'product-create' %}">Criar Produtos</a>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in object_list %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>R$ {{ product.value }}</td>
+                    <td>{{ product.amount }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>
+                        <a href="{% url 'product-detail' product.id %}">Ver mais</a> | <a href="{% url 'product-update' product.id %}">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
