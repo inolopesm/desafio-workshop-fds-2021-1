@@ -17,6 +17,7 @@
             <tr>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                 <tr>
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
+                    <td><a href="{% url 'category-update' category.id %}">Editar</a></td>
                 </tr>
             {% endfor %}
         </tbody>
