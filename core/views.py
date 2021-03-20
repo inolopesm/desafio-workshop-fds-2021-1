@@ -1,6 +1,7 @@
 from django.views.generic import CreateView
-from .models import Category
+from .forms import CategoryForm
 
 class CategoryCreateView(CreateView):
-    model = Category
-    fields = ['name']
+    form_class = CategoryForm
+    template_name = 'core/category_form.html'
+    success_url = '/categories/'
