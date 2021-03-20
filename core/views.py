@@ -3,3 +3,4 @@ from .models import Category
 
 class CategoryCreateView(CreateView):
     model = Category
+    fields = ['name']
