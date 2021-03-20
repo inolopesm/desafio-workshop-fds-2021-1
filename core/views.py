@@ -27,6 +27,28 @@ class ProductCreateView(CreateView):
 class ProductListView(ListView):
     model = Product
 
+    def get_queryset(self):
+        # https://docs.djangoproject.com/en/3.1/ref/models/querysets/#django.db.models.query.QuerySet.order_by
+        # https://docs.djangoproject.com/en/3.1/ref/models/querysets/#icontains
+
+        orderByValue = self.request.GET.get('orderBy', 'id')
+        fieldName = self.request.GET.get('fieldName')
+        fieldValue = self.request.GET.get('fieldValue')
+
+        queryset = Product.objects.order_by(orderByValue)
+
+        if fieldName and fieldValue:
+            if fieldName == 'id':
+                queryset = queryset.filter(id__icontains=int(fieldValue))
+            elif fieldName == 'name':
+                queryset = queryset.filter(name__icontains=fieldValue)
+            elif fieldName == 'value':
+                queryset = queryset.filter(value__icontains=float(fieldValue))
+            elif fieldName == 'amount':
+                queryset = queryset.filter(amount__icontains=int(fieldValue))
+
+        return queryset
+
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm

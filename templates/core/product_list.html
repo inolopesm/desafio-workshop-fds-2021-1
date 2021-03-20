@@ -15,6 +15,32 @@
     <p>
         <a href="{% url 'product-create' %}">Criar Produtos</a>
     </p>
+    <form id="form">
+        <h3>Alterar Visualização de Produtos</h3>
+        <p>
+            <label>Ordernar por: </label>
+            <select name="orderBy">
+                <option value="id">ID</option>
+                <option value="name">Nome</option>
+                <option value="value">Valor</option>
+                <option value="amount">Quantidade</option>
+                <option value="category">Categoria</option>
+            </select>
+        </p>
+        <p>
+            <label>Buscar por: </label>
+            <select name="fieldName">
+                <option value="id">ID</option>
+                <option value="name">Nome</option>
+                <option value="value">Valor</option>
+                <option value="amount">Quantidade</option>
+            </select>
+            <input name="fieldValue" />
+        </p>
+        <p>
+            <button type="submit">Alterar</button>
+        </p>
+    </form>
     <table>
         <thead>
             <tr>
@@ -41,5 +67,29 @@
             {% endfor %}
         </tbody>
     </table>
+    <script>
+        const inputEl = document.querySelector('input[name=fieldValue]')
+
+        document.querySelector('select[name=fieldName]')
+            .addEventListener('change', function () {
+                inputEl.value = ''
+
+                if (['id', 'value', 'amount'].includes(this.value)) {
+                    inputEl.type = 'number'
+                    inputEl.min = 1;
+
+                    if (this.value === 'value') {
+                        inputEl.step = '0.01'
+                    } else {
+                        inputEl.step = '1'
+                    }
+                } else {
+                    inputEl.type = 'text'
+                    inputEl.removeAttribute('type')
+                    inputEl.removeAttribute('min')
+                    inputEl.removeAttribute('step')
+                }
+            })
+    </script>
 </body>
 </html>
