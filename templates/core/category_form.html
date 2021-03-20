@@ -9,6 +9,9 @@
 <body>
     <h1>Loja</h1>
     <h2>Categorias</h2>
+    <p>
+        <a href="{% url 'category-list' %}">Listar Categorias</a>
+    </p>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
