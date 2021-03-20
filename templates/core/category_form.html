@@ -6,16 +6,19 @@
         <a class="nav-item nav-link" href="{% url 'category-list' %}">
             Listar Categorias
         </a>
+        <a class="nav-item nav-link" href="{% url 'category-create' %}">
+            Criar Categoria
+        </a>
         {% if object %}
             <a
                 class="nav-item nav-link"
                 href="{% url 'category-detail' object.id %}"
             >
-                Ver Categoria de forma detalhada
+                Ver detalhes desta Categoria
             </a>
         {% endif %}
     </div>
-    <h3>Criar Categoria</h3>
+    <h3 class="mb-3">Criar Categoria</h3>
     <form class="row" method="POST">
         {% csrf_token %}
         <div class="row mb-3">

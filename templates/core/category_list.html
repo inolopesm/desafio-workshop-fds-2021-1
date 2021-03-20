@@ -3,6 +3,9 @@
 {% block content %}
     <h2>Categorias</h2>
     <div class="nav mb-3">
+        <a class="nav-item nav-link" href="{% url 'category-list' %}">
+            Listar Categorias
+        </a>
         <a class="nav-item nav-link" href="{% url 'category-create' %}">
             Criar Categoria
         </a>
