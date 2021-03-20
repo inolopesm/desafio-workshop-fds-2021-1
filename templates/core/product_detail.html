@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja - Detalhe de um Produto</title>
-</head>
-<body>
-    <h1>Loja</h1>
-    <p>
-        <a href="{% url 'category-list' %}">Categorias</a> | <a href="{% url 'product-list' %}">Produtos</a>
-    </p>
-    <h2>Produto</h2>
-    <p>
-        <a href="{% url 'product-list' %}">Listar Produtos</a>
-    </p>
+{% extends 'core/base.html' %}
+{% block subtitle %}Detalhe de um Produto{% endblock %}
+{% block content %}
+    <h2>Produtos</h2>
+    <div class="nav mb-3">
+        <a class="nav-item nav-link" href="{% url 'product-list' %}">
+            Listar Produtos
+        </a>
+    </div>
     <h3>{{ object.name }}</h3>
-    <dl>
-        <dt>Valor</dt>
-        <dd>R$ {{ object.value }}</dd>
-        <dt>Quantidade</dt>
-        <dd>{{ object.amount }}</dd>
-        <dt>Categoria</dt>
-        <dd>{{ object.category.name }}</dd>
+    <dl class="row">
+        <dt class="col-md-3">Valor</dt>
+        <dd class="col-md-9">R$ {{ object.value }}</dd>
+        <dt class="col-md-3">Quantidade</dt>
+        <dd class="col-md-9">{{ object.amount }}</dd>
+        <dt class="col-md-3">Categoria</dt>
+        <dd class="col-md-9">{{ object.category.name }}</dd>
     </dl>
-    <p>
-        <a href="{% url 'product-update' object.id %}">Editar Produto</a>
-    </p>
-</body>
-</html>
+    <div class="nav">
+        <a
+            class="nav-item nav-link"
+            href="{% url 'product-update' object.id %}"
+        >
+            Editar Produto
+        </a>
+    </div class="nav">
+{% endblock %}

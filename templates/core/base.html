@@ -11,9 +11,13 @@
 <body>
     <div class="container">
         <h1 class="text-center">Loja</h1>
-        <div class="nav justify-content-center">
-            <a class="nav-item nav-link" href="{% url 'category-list' %}">Categorias</a>
-            <a class="nav-item nav-link" href="{% url 'product-list' %}">Produtos</a>
+        <div class="nav justify-content-center mb-3">
+            <a class="nav-item nav-link" href="{% url 'category-list' %}">
+                Categorias
+            </a>
+            <a class="nav-item nav-link" href="{% url 'product-list' %}">
+                Produtos
+            </a>
         </div>
         {% block content %}
         {% endblock %}

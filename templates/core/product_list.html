@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja - Listagem de Produtos</title>
-</head>
-<body>
-    <h1>Loja</h1>
-    <p>
-        <a href="{% url 'category-list' %}">Categorias</a> | <a href="{% url 'product-list' %}">Produtos</a>
-    </p>
+{% extends 'core/base.html' %}
+{% block subtitle %}Listagem de Produtos{% endblock %}
+{% block content %}
     <h2>Produtos</h2>
-    <p>
-        <a href="{% url 'product-create' %}">Criar Produtos</a>
-    </p>
+    <div class="nav mb-3">
+        <a
+            class="nav-item nav-link"
+            href="{% url 'product-create' %}"
+        >
+            Criar Produtos
+        </a>
+    </div>
     <form id="form">
-        <h3>Alterar Visualização de Produtos</h3>
+        <strong>Alterar Visualização de Produtos</strong>
         <p>
             <label>Ordernar por: </label>
             <select name="orderBy">
@@ -91,5 +86,4 @@
                 }
             })
     </script>
-</body>
-</html>
+{% endblock %}
