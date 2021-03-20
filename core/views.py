@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
+from .models import Category
 
-# Create your views here.
+class CategoryCreateView(CreateView):
+    model = Category
