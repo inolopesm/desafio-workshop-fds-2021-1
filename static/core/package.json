@@ -1,6 +1,0 @@
-{
-  "name": "core",
-  "dependencies": {
-    "bootstrap": "^5.0.0-beta2"
-  }
-}
