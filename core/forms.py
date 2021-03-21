@@ -17,8 +17,14 @@ class ProductForm(ModelForm):
 
     class Meta:
         model = Product
-        fields = ['name', 'value', 'amount', 'category']
-        labels = {'name': _('Nome'), 'value': _('Valor'), 'amount': _('Quantidade'), 'category': _('Categoria')}
+        fields = ['name', 'value', 'amount', 'category', 'image']
+        labels = {
+            'name': _('Nome'),
+            'value': _('Valor'),
+            'amount': _('Quantidade'),
+            'category': _('Categoria'),
+            'image': _('Imagem'),
+        }
 
     def clean_value(self):
         value = self.cleaned_data['value']

@@ -11,3 +11,4 @@ class Product(models.Model):
     value = models.DecimalField(max_digits=9, decimal_places=2)
     amount = models.PositiveIntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='core/product/', default='core/product/default.jpg')
