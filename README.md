@@ -55,3 +55,9 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+## ✏️ Anotações e considerações
+
+Foi um CRUD simples com um relacionamento um-pra-muitos de produtos e categorias, com o uso do django. O django facilita muita coisa mas você tem que estar atento a documentação para saber o jeito django de fazer o que você quer.
+
+Se alguém estiver vendo este projeto e quiser implementar mais alguma coisa, recomendo adicionar a funcionalidade de venda, onde baixará o estoque do(s) produto(s)
