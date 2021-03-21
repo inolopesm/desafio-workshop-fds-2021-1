@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block subtitle %}Deletar uma Categoria{% endblock %}
+{% block content %}
+    <h2>Categorias</h2>
+    <p>
+        <a href="{% url 'category-list' %}">
+            Listar Categorias
+        </a>
+        |
+        <a href="{% url 'category-create' %}">
+            Criar Categoria
+        </a>
+    </p>
+    <h3>Deletar Categoria</h3>
+    <p>
+        <a href="{% url 'category-detail' object.id %}">
+            Ver detalhes desta Categoria
+        </a>
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Você tem certeza que quer deletar a categoria "#{{ object.id }} {{ object.name }}"?</p>
+        <button type="submit">
+            Confirmo
+        </button>
+    </form>
+{% endblock %}

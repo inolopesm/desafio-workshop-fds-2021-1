@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block subtitle %}Deletar um Produto{% endblock %}
+{% block content %}
+    <h2>Categorias</h2>
+    <p>
+        <a href="{% url 'product-list' %}">
+            Listar Produtos
+        </a>
+        |
+        <a href="{% url 'product-create' %}">
+            Criar Produto
+        </a>
+    </p>
+    <h3>Deletar Produto</h3>
+    <p>
+        <a href="{% url 'product-detail' object.id %}">
+            Ver detalhes deste Produto
+        </a>
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Você tem certeza que quer deletar o produto "#{{ object.id }} {{ object.name }}"?</p>
+        <button type="submit">
+            Confirmo
+        </button>
+    </form>
+{% endblock %}
