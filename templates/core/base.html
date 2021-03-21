@@ -6,21 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja - {% block subtitle %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'core/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}" />
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Loja</h1>
-        <div class="nav justify-content-center mb-3">
-            <a class="nav-item nav-link" href="{% url 'category-list' %}">
-                Categorias
-            </a>
-            <a class="nav-item nav-link" href="{% url 'product-list' %}">
-                Produtos
-            </a>
-        </div>
-        {% block content %}
-        {% endblock %}
-    </div>
+    <h1>Loja</h1>
+    <p>
+        <a href="{% url 'category-list' %}">Categorias</a>
+        |
+        <a href="{% url 'product-list' %}">Produtos</a>
+    </p>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

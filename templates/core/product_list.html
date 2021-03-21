@@ -2,39 +2,40 @@
 {% block subtitle %}Listagem de Produtos{% endblock %}
 {% block content %}
     <h2>Produtos</h2>
-    <div class="nav mb-3">
-        <a
-            class="nav-item nav-link"
-            href="{% url 'product-create' %}"
-        >
+    <p>
+        <a href="{% url 'product-create' %}">
             Criar Produtos
         </a>
-    </div>
+    </p>
+    <h3>Listagem de Produtos</h3>
     <form id="form">
-        <strong>Alterar Visualização de Produtos</strong>
-        <p>
-            <label>Ordernar por: </label>
-            <select name="orderBy">
-                <option value="id">ID</option>
-                <option value="name">Nome</option>
-                <option value="value">Valor</option>
-                <option value="amount">Quantidade</option>
-                <option value="category">Categoria</option>
-            </select>
-        </p>
-        <p>
-            <label>Buscar por: </label>
-            <select name="fieldName">
-                <option value="id">ID</option>
-                <option value="name">Nome</option>
-                <option value="value">Valor</option>
-                <option value="amount">Quantidade</option>
-            </select>
-            <input name="fieldValue" />
-        </p>
-        <p>
+        <fieldset>
+            <legend>Alterar Visualização de Produtos</legend>
+            <p>
+                <label>Ordernar por</label>
+                <select name="orderBy">
+                    <option value="id">ID</option>
+                    <option value="name">Nome</option>
+                    <option value="value">Valor</option>
+                    <option value="amount">Quantidade</option>
+                    <option value="category">Categoria</option>
+                </select>
+            </p>
+            <p>
+                <label>Buscar por</label>
+                <select name="fieldName">
+                    <option value="id">ID</option>
+                    <option value="name">Nome</option>
+                    <option value="value">Valor</option>
+                    <option value="amount">Quantidade</option>
+                </select>
+            </p>
+            <p>
+                <label>Valor a ser buscado</label>
+                <input class="form-control" name="fieldValue" />
+            </p>
             <button type="submit">Alterar</button>
-        </p>
+        </fieldset>
     </form>
     <table>
         <thead>
@@ -56,7 +57,9 @@
                     <td>{{ product.amount }}</td>
                     <td>{{ product.category.name }}</td>
                     <td>
-                        <a href="{% url 'product-detail' product.id %}">Ver mais</a> | <a href="{% url 'product-update' product.id %}">Editar</a>
+                        <a href="{% url 'product-detail' product.id %}">
+                            Ver mais
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

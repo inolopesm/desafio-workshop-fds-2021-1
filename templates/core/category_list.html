@@ -2,14 +2,11 @@
 {% block subtitle %}Listagem de Categorias{% endblock %}
 {% block content %}
     <h2>Categorias</h2>
-    <div class="nav mb-3">
-        <a class="nav-item nav-link" href="{% url 'category-list' %}">
-            Listar Categorias
-        </a>
-        <a class="nav-item nav-link" href="{% url 'category-create' %}">
+    <p>
+        <a href="{% url 'category-create' %}">
             Criar Categoria
         </a>
-    </div>
+    </p>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -25,9 +22,9 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td>
-                            <a href="{% url 'category-detail' category.id %}">Ver mais</a>
-                            |
-                            <a href="{% url 'category-update' category.id %}">Editar</a>
+                            <a href="{% url 'category-detail' category.id %}">
+                                Ver mais
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

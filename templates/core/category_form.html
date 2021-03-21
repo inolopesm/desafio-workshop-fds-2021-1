@@ -2,55 +2,30 @@
 {% block subtitle %}Formulário para Categoria{% endblock %}
 {% block content %}
     <h2>Categorias</h2>
-    <div class="nav mb-3">
-        <a class="nav-item nav-link" href="{% url 'category-list' %}">
+    <div>
+        <a href="{% url 'category-list' %}">
             Listar Categorias
         </a>
-        <a class="nav-item nav-link" href="{% url 'category-create' %}">
-            Criar Categoria
-        </a>
         {% if object %}
-            <a
-                class="nav-item nav-link"
-                href="{% url 'category-detail' object.id %}"
-            >
-                Ver detalhes desta Categoria
+            |
+            <a href="{% url 'category-create' %}">
+                Criar Categoria
             </a>
         {% endif %}
     </div>
-    <h3 class="mb-3">Criar Categoria</h3>
-    <form class="row" method="POST">
+    {% if object %}
+        <h3>Editar Categoria</h3>
+        <p>
+            <a href="{% url 'category-detail' object.id %}">
+                Ver detalhes desta Categoria
+            </a>
+        </p>
+    {% else %}
+        <h3>Criar Categoria</h3>
+    {% endif %}
+    <form method="POST">
         {% csrf_token %}
-        <div class="row mb-3">
-            <label
-                for="{{ field.id_for_label }}"
-                class="col-sm-2 col-form-label"
-            >
-                {{ form.name.label }}
-            </label>
-            <div class="col-sm-10">
-                <input
-                    class="form-control"
-                    id="{{ form.name.id_for_label }}"
-                    name="{{ form.name.name }}"
-                    required="{{ form.name.required }}"
-                    {% if form.name.value %}
-                        value="{{ form.name.value }}"
-                    {% endif %}
-                />
-                {% if form.name.errors %}
-                    {% for error in form.name.errors %}
-                        <div class="form-text text-danger">
-                            {{ error|escape }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div>
-                <button class="btn btn-primary" type="submit">Salvar</button>
-            </div>
-        </div>
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
     </form>
 {% endblock %}

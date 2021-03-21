@@ -2,26 +2,43 @@
 {% block subtitle %}Detalhe de um Produto{% endblock %}
 {% block content %}
     <h2>Produtos</h2>
-    <div class="nav mb-3">
-        <a class="nav-item nav-link" href="{% url 'product-list' %}">
+    <p>
+        <a href="{% url 'product-list' %}">
             Listar Produtos
         </a>
-    </div>
-    <h3>{{ object.name }}</h3>
-    <dl class="row">
-        <dt class="col-md-3">Valor</dt>
-        <dd class="col-md-9">R$ {{ object.value }}</dd>
-        <dt class="col-md-3">Quantidade</dt>
-        <dd class="col-md-9">{{ object.amount }}</dd>
-        <dt class="col-md-3">Categoria</dt>
-        <dd class="col-md-9">{{ object.category.name }}</dd>
-    </dl>
-    <div class="nav">
-        <a
-            class="nav-item nav-link"
-            href="{% url 'product-update' object.id %}"
-        >
-            Editar Produto
+        |
+        <a href="{% url 'product-create' %}">
+            Criar Produto
         </a>
-    </div class="nav">
+    </p>
+    <h3>#{{ object.id }} {{ object.name }}</h3>
+    <p>
+        <a href="{% url 'product-update' object.id %}">
+            Editar este Produto
+        </a>
+        |
+        <a href="{% url 'product-delete' object.id %}">
+            Deletar este Produto
+        </a>
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Valor</strong></td>
+                <td>R$ {{ object.value }}</td>
+            </tr>
+            <tr>
+                <td><strong>Quantidade</strong></td>
+                <td>{{ object.amount }}</td>
+            </tr>
+            <tr>
+                <td><strong>Categoria</strong></td>
+                <td>
+                    <a href="{% url 'category-detail' object.category.id %}">
+                        #{{ object.category.id }} {{ object.category.name }}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}

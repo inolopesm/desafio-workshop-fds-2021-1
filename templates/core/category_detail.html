@@ -2,21 +2,26 @@
 {% block subtitle %}Detalhe de uma Categoria{% endblock %}
 {% block content %}
     <h2>Categorias</h2>
-    <div class="nav mb-3">
-        <a class="nav-link nav-item" href="{% url 'category-list' %}">
+    <p>
+        <a href="{% url 'category-list' %}">
             Listar Categorias
         </a>
-        <a class="nav-item nav-link" href="{% url 'category-create' %}">
+        |
+        <a href="{% url 'category-create' %}">
             Criar Categoria
         </a>
-        <a
-            class="nav-item nav-link"
-            href="{% url 'category-update' object.id %}"
-        >
+    </p>
+    <h3>#{{ object.id }} {{ object.name }}</h3>
+    <p>
+        <a href="{% url 'category-update' object.id %}">
             Editar esta Categoria
         </a>
-    </div>
-    <h3 class="h5">{{ object.name }}</h3>
+        |
+        <a href="{% url 'category-delete' object.id %}">
+            Deletar esta Categoria
+        </a>
+    </p>
+    <h4>Produtos</h4>
     <ul>
     {% for product in object.product_set.all %}
         <li>
